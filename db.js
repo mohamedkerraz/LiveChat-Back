@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const MONGO_URI = `mongodb://${process.env.ADMIN_USERNAME}:${process.env.ADMIN_PASSWORD}@localhost:${process.env.MONGO_PORT}` || "mongodb://localhost:27017/livechat";
-console.log(MONGO_URI);
+const MONGO_URI = `mongodb://${process.env.ADMIN_USERNAME}:${process.env.ADMIN_PASSWORD}@mongo:27017`;
+
 
 mongoose
     .connect(MONGO_URI)

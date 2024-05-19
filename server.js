@@ -13,7 +13,7 @@ require("dotenv").config();
 
 const app = express();
 const EXPRESS_PORT = process.env.EXPRESS_PORT || 3000;
-const FRONTEND_PORT = process.env.FRONTEND_PORT || 5173;
+const FRONTEND_PORT = process.env.FRONTEND_PORT || 3800;
 
 app.use(
     cors({
@@ -47,7 +47,7 @@ mongoose.connection.once("open", () => {
     let channel;
     async function connectRabbitMQ() {
         try {
-            const connection = await amqp.connect(`amqp://${process.env.ADMIN_USERNAME}:${process.env.ADMIN_PASSWORD}@localhost:${process.env.RABBITMQ_AMQP_PORT}`);
+            const connection = await amqp.connect(`amqp://${process.env.ADMIN_USERNAME}:${process.env.ADMIN_PASSWORD}@rabbitmq:${process.env.RABBITMQ_AMQP_PORT}`);
             channel = await connection.createChannel();
             await channel.assertQueue("chat");
         } catch (error) {
